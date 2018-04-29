@@ -290,3 +290,120 @@ a {
   text-align: center;
   padding-bottom: 30px;
 }
+
+//Landing-Page
+
+.landing-page {
+  margin-top: 100px;
+}
+
+.landing-page h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.caroussel-brand {
+  color: #000;
+  font-size: 1.75em;
+  text-align: right;
+}
+
+.caroussel-name {
+  color: #000;
+  font-size: 2.5em;
+  line-height: 1.5em;
+  text-align: right;
+}
+
+.caroussel-price {
+  color: #2dbf09;
+  font-size: 1.75em;
+  text-align: right;
+}
+
+.carousel-caption {
+  text-shadow: 0 0;
+}
+
+.carousel-control {
+  text-shadow: 0 0;
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control.right {
+  background-image: none;
+}
+
+.carousel-control a:hover {
+  color: #fff;
+}
+
+.carousel-indicators li {
+  color: black;
+  border: 1px solid black;
+}
+
+.carousel-indicators .active {
+  background-color: black;
+}
+
+//Random products -> Latest arrival
+
+.newest-arrival {
+  background-color: #19AAC4;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.newest-arrival h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+.newest-arrival h3 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: white;
+}
+
+.newest-arrival a,
+.newest-arrival p {
+  color: white;
+}
+
+.buy_btn {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.buy_btn button {
+  border: 1px solid #2DBF09;
+  background-color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.buy_btn button:hover {
+  background-color: #2DBF09;
+  color: white;
+  text-decoration: none;
+}
+
+.buy_btn a {
+  color: black;
+}
+
+.buy_btn a:hover {
+  background-color: #2DBF09;
+  text-decoration: none;
+  color: white;
+}
+
+.img-left img{
+  width: 75%;
+}

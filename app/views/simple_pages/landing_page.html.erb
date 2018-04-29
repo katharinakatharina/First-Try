@@ -1,16 +1,53 @@
-<%= image_tag("bike.jpg", class: "img-responsive") %>
-<div class="container-fluid landing_page">
-  <h2>Featured Product:</h2>
-  <div class="show-header">
-    <h3><%= @featured_product.name %></h3>
-    <div class="col-md-7">
-      <%= image_tag(@featured_product.image_url, class: "img-responsive product_img") %>
+<div class="container-fluid landing-page">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @products.each_with_index do |product, i| %>
+      <li data-target="#mycarousel" data-slide-to=#{i) class="#{'active' if i == 0}"></li>
+    <% end %>
+  </ol>
+  <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <% @products.each do |product| %>
+      <div class="item<%= " active" if product == @products.first %>">
+        <%= image_tag(product.image_url) %>
+        <div class="carousel-caption">
+          <p class="caroussel-brand"><%= product.brand %></p>
+          <p class="caroussel-name"><%= link_to product.name, product %></p>
+          <p class="caroussel-price"><%= product.price %> EUR</p>
+        </div>
+          </div>
+      <% end %>
     </div>
-    <div class="col-md-5">
-      <div class="product-price">
-        <p>Price: <%= @featured_product.price %></p>
+   <!-- Controls -->
+   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+     <span class="sr-only">Previous</span>
+   </a>
+   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+     <span class="sr-only">Next</span>
+   </a>
+  </div>
+  <h1>Products</h1>
+  <div class="row">
+    <% @products.each do |product| %>
+      <%= render product %>
+    <% end %>
+  </div>
+  <div class="newest-arrival">
+    <h2>See our latest Arrival:</h2>
+    <div class="col-md-7 img-left">
+
+      <% product = Product.random %>
+      <%= image_tag(product.image_url) %>
+    </div>
+    <div class="col md-5 description-right">
+      <h3><%= link_to product.name, product %></h3>
+      <p><%=  product.description %></p>
+      <div class="buy_btn">
+        <button><i class="fas fa-arrow-right"></i> <%= link_to 'See more', product %></button>
       </div>
-      <p><%= @featured_product.description %></p>
     </div>
   </div>
 </div>

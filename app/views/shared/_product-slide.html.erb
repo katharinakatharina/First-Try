@@ -1,0 +1,13 @@
+<div class="col-sm-2 col-md-4 single-product-all">
+  <h2><%= link_to product.name, product %></h2>
+  <p>Brand: <%= product.brand %></p>
+  <%= image_tag(product.image_url, class: "img-responsive product_img") %>
+  <div class="product-price">
+    <p>Price: <%= product.price %></p>
+  </div>
+  <div class="edit_btn">
+    <button><%= link_to 'Show', product %></button>
+    <button><%= link_to 'Edit', edit_product_path(product) %></button>
+    <button><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  </div>
+</div>
