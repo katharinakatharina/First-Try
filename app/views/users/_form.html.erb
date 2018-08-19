@@ -3,7 +3,7 @@
   <%= form_with(model: user, local: true) do |form| %>
     <% if user.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved. Take a look at what went wrong:</h2>
 
         <ul>
         <% user.errors.full_messages.each do |message| %>
@@ -13,24 +13,36 @@
       </div>
     <% end %>
 
-    <div class="field form-group">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="field form-group col-md-6">
       <%= form.label :first_name %>
       <%= form.text_field :first_name %>
+      </div>
     </div>
 
-    <div class="field form-group">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="field form-group col-md-6">
       <%= form.label :last_name %>
       <%= form.text_field :last_name %>
+      </div>
     </div>
 
-    <div class="field form-group">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="field form-group col-md-6">
       <%= form.label :email %>
       <%= form.text_field :email %>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
     </div>
 
-    <div class="actions">
-      <%= form.submit 'Submit', class: "btn btn-default" %>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="actions col-md-6">
+      <%= f.submit "Log in", class: "btn btn-default"  %>
     </div>
+  </div>
   <% end %>
 </div>
