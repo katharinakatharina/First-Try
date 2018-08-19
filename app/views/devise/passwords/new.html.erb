@@ -13,9 +13,16 @@
     </div>
   </div>
 
-  <div class="actions form-group">
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="actions form-group col-md-6">
     <%= f.submit "Send me reset password instructions", class: "btn btn-default" %>
   </div>
-<% end %>
+  </div>
 
-<%= render "devise/shared/links" %>
+<% end %>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6"><%= render "devise/shared/links" %></div>
+</div>
