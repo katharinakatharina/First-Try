@@ -23,7 +23,7 @@
 <% cache @comments do %>
   <div class="container-fluid rating-block">
     <%= render 'new_comment' %>
-    <%= render :partial => @comments.reverse %>
+     <%= render 'comments' %> 
     <%= will_paginate @comments %>
 
     <!--<strong>Highest comment:</strong>
