@@ -83,9 +83,6 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.web_socket_server_url = "wss://bestberlinbikes.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://bestberlinbikes.herokuapp.com', 'http://bestberlinbikes.herokuapp.com']
-
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
@@ -106,4 +103,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.web_socket_server_url = "wss://bestberlinbikes.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://bestberlinbikes.herokuapp.com', 'http://bestberlinbikes.herokuapp.com']
+
 end
