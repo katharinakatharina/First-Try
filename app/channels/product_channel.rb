@@ -8,8 +8,8 @@ class ProductChannel < ApplicationCable::Channel
   end
 
   def listen(data)
-   stop_all_streams
-   stream_for data["product_id"]
- end
- 
+    stop_all_streams
+    stream_for data["product_id"]
+  end
+
 end
