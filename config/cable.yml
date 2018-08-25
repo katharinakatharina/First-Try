@@ -7,4 +7,5 @@ test:
 production:
   adapter: postgresql
   url: postgres://lezyxpaefqbjzh:fb0124f8f5832285617f6c70bc1835d7a6170b1426c43114042e3bd9b168a81f@ec2-107-20-249-68.compute-1.amazonaws.com:5432/d1i2fmhjc8gi05
+  channel_prefix: bestberlinbikes_production
 
