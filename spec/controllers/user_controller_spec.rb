@@ -18,6 +18,15 @@ require 'rails_helper'
         expect(assigns(:user)).to eq @user1
       end
 
+      it 'redirects to root_path when accessing other userpage' do
+        get :show, params: { id: @user2.id }
+        expect(response).to redirect_to(root_path)
+      end
+       it 'returns 302 when accessing other userpage' do
+        get :show, params: { id: @user2.id }
+        expect(response.response_code).to eq 302
+      end
+
     end
   end
 end

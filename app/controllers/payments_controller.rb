@@ -21,13 +21,13 @@ class PaymentsController < ApplicationController
           user_id: @user.id,
           total: @product.price
         )
-      flash[:success] = "Your payment was processed successfully. Have fun with your bike."
+      @notice = "Your payment was processed successfully. Have fun with your bike."
     end
     rescue Stripe::CardError => e
       # The card has been declined
       body = e.json_body
       err = body[:error]
-      flash[:error] = "Unfortunately, there was an error processing your payment: #{err[:message]}"
+      @alert = "Unfortunately, there was an error processing your payment: #{err[:message]}"
     end
     redirect_to product_path(@product)
   end

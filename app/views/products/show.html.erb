@@ -12,18 +12,23 @@
     <% end %>
   </div>
     <p id="notice" class="alert alert-info" style="display:none" role="alert">A new comment was posted!</p>
-    <div class="edit_btn">
-      <div class="button">
-        <span><%= link_to 'Edit', edit_product_path(@product) %> </span>
-        <span><%= link_to 'Back', products_path %></span>
+    <% if signed_in? && current_user.admin? %>
+      <div class="edit_btn button">
+          <span><%= link_to 'Edit', edit_product_path(@product) %> </span>
+        </div>
       </div>
-    </div>
+    <% end %>
+      <div class="edit_btn button">
+          <span><%= link_to 'Back', products_path %></span>
+        </div>
+      </div>
+
   </div>
 <% end %>
 <% cache @comments do %>
   <div class="container-fluid rating-block">
     <%= render 'new_comment' %>
-     <%= render 'comments' %> 
+     <%= render 'comments' %>
     <%= will_paginate @comments %>
 
     <!--<strong>Highest comment:</strong>

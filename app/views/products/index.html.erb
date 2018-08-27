@@ -7,9 +7,10 @@
     <div>
       <% cache (cache_key_for_products) do %>
         <%= render @products %>
-      <% end %>  
+      <% end %>
     </div>
   <br>
+  <% if signed_in? && current_user.admin? %>
   <div class="edit_btn">
     <div class="button">
       <span>
@@ -18,4 +19,5 @@
       </span>
     </div>
   </div>
+  <% end %>
 </div>

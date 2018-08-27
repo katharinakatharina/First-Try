@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :authorize_admin, only: [:new, :create, :update, :destroy, :edit]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
@@ -11,11 +11,9 @@ class ProductsController < ApplicationController
     if params[:q]
       search_term = params[:q]
       @products = Product.search(search_term)
-      logger.debug "Product: #{@products}"
       # return the filtered list here
     else
       @products = Product.all
-      logger.debug "Product: #{@products}"
     end
   end
 
@@ -90,6 +88,12 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :image_url, :price, :brand, :brand_image, :article_number, :color)
+    end
+
+    def authorize_admin
+      if current_user.blank? || !current_user.admin?
+        redirect_to root_path, alert: 'Admins only!'
+      end
     end
 
 
