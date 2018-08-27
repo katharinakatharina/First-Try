@@ -14,12 +14,12 @@ class UserMailer < ApplicationMailer
          subject: "Welcome to #{@appname}!")
   end
 
-  def oder_placed(user, product)
+  def order_placed(user, product)
     @user = user
     @product = product
-    mail(from: 'katharina.gottwald@gmx.de',
-        to: 'user.email',
-        subject: 'Your order of the #{product.name} has been placed.'
+    mail(:from => 'katharina.gottwald@gmx.de',
+        :to => 'user.email',
+        :subject => 'Your order of the #{product.name} has been placed.'
     )
-
+  end
 end

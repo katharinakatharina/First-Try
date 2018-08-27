@@ -15,20 +15,25 @@ class PaymentsController < ApplicationController
         receipt_email: @user.email
       )
 
-    if charge.paid
-      Order.create(
+      if charge.paid
+
+        order = Order.create(
           product_id: @product.id,
           user_id: @user.id,
           total: @product.price
         )
-      @notice = "Your payment was processed successfully. Have fun with your bike."
-    end
+
+        UserMailer.order_placed(@user, @product).deliver_now
+      end
+      redirect_to '/payments/success', notice: "Your payment was processed successfully. Thank you for purchasing."
+
     rescue Stripe::CardError => e
       # The card has been declined
       body = e.json_body
       err = body[:error]
       @alert = "Unfortunately, there was an error processing your payment: #{err[:message]}"
+      redirect_to product_path(@product)
+
     end
-    redirect_to product_path(@product)
   end
 end

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'simple_pages/section3'
   post 'simple_pages/thank_you'
   post 'payments/create'
-  get 'payments/create'
+  get 'payments/success'
   root 'simple_pages#landing_page'
   mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
