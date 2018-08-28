@@ -15,14 +15,12 @@ describe Product do
       expect(@product.average_rating).to eq 3
     end
 
-  expand
+  end
 
   context "when the attributes are not valid" do
     it "is not valid" do
       expect(Product.new(description: "Nice bike")).not_to be_valid
     end
   end
-
-end
 
 end

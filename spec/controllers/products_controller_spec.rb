@@ -46,7 +46,7 @@ describe ProductsController, type: :controller do
   #POST create
   describe 'POST #create' do
     before do
-      sign_in @user
+      sign_in @admin
     end
 
     it 'creates a new product' do
@@ -56,13 +56,24 @@ describe ProductsController, type: :controller do
     it 'does not create a new product' do
       expect(Product.new(name:nil)).not_to be_valid
     end
+  end
 
+  #gET edit
+  describe 'GET #edit' do
+    before do
+      sign_in @admin
+    end
+    it 'renders the show template' do
+      get :edit, params: { id: @product.id }
+      expect(response).to be_ok
+      expect(response).to render_template('edit')
+    end
   end
 
   #DELETE destroy
   describe 'DELETE #destroy' do
     before do
-      sign_in @user
+      sign_in @admin
     end
     it 'delete the product' do
       delete :destroy, params: {id: @product.id }
