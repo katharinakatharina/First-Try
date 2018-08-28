@@ -23,9 +23,9 @@ class PaymentsController < ApplicationController
           total: @product.price
         )
 
-        #UserMailer.order_placed(@user, order).deliver_now
+        UserMailer.order_placed(@user, @product).deliver_now
 
-      @notice = "Your payment was processed successfully. Thank you for purchasing. We will send you an e-mail with further information."
+      @notice = "Your payment was processed successfully. Thank you for your order. We will send you an e-mail with further information."
       end
     rescue Stripe::CardError => e
       # The card has been declined
