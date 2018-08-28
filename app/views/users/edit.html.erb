@@ -2,10 +2,12 @@
   <%= image_tag("bike2.jpg", class: "img-responsive") %>
 </div>
 <div class="container-fluid">
-<h1>Editing User</h1>
+  <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+  <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <div class="edit_btn button">
+      <span><%= link_to 'Show', @user %></span>
+      <span><%= link_to 'Back', users_path %></span>
+  </div>
 </div>

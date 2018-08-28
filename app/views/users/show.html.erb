@@ -7,14 +7,18 @@
 
   <p>
     <strong>First name:</strong>
-    <%= @user.first_name %>
+      <b><%= @user.first_name %></b>
   </p>
 
   <p>
     <strong>Last name:</strong>
-    <%= @user.last_name %>
+      <b><%= @user.last_name %></b>
   </p>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  </div>
+
+  <div class="edit_btn button">
+      <span><%= link_to 'Edit', edit_user_path(@user) %> </span>
+      <span><%= link_to 'Back', users_path %> </span>
+  </div>
 </div>
