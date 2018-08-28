@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
         currency: "eur",
         source: token,
         description: params[:stripeEmail],
-        receipt_email: @user.email
+        receipt_email: params[:stripeEmail],
       )
 
       if charge.paid
@@ -33,8 +33,7 @@ class PaymentsController < ApplicationController
       body = e.json_body
       err = body[:error]
       @alert = "Unfortunately, there was an error processing your payment: #{err[:message]}"
-      redirect_to product_path(@product)
-
     end
+    redirect_to product_path(@product), :notice => @notice , :alert => @alert
   end
 end

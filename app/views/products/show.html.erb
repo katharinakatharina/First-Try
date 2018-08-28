@@ -6,6 +6,7 @@
   <div class="container-fluid product-show">
     <div class="row" data-product-id="<%= @product.id %>">
     <%= render 'product-detail', product: @product %>
+  <!--  <p id="notice"><%= notice %></p> -->
     <div class="payment-position">
       <% if user_signed_in? %>
       <%= form_with(url: '/payments/create') do |form| %>
