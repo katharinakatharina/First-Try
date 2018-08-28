@@ -8,8 +8,12 @@
     <div class="col-md-8 order_list_right">
   		<ul>
         <li><h3><%= link_to order.product.name, order %></h3></li>
-        <li><%= link_to order.product.name, order %></li>
+        <li><small><%= order.product.description %></small></li>
   			<li><strong>$ <%= order.product.price %></strong></li>
+        <li><button class="remove-product">
+              <%= link_to 'Remove', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </button>
+        </li>
       </ul>
     </div>
   </div>
