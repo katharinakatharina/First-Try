@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
         currency: "eur",
         source: token,
         description: params[:stripeEmail],
-        receipt_email: params[:stripeEmail],
+        receipt_email: @user.email
       )
 
       if charge.paid
@@ -23,9 +23,8 @@ class PaymentsController < ApplicationController
           total: @product.price
         )
 
-        UserMailer.order_placed(@user, @product).deliver_now
+        #UserMailer.order_placed(@user, order).deliver_now
 
-      #redirect_to '/payments/success'
       @notice = "Your payment was processed successfully. Thank you for purchasing."
       end
     rescue Stripe::CardError => e
@@ -33,7 +32,10 @@ class PaymentsController < ApplicationController
       body = e.json_body
       err = body[:error]
       @alert = "Unfortunately, there was an error processing your payment: #{err[:message]}"
+      redirect_to product_path(@product), :alert => @alert
+
     end
-    redirect_to product_path(@product), :notice => @notice , :alert => @alert
+    #redirect_to 'payments/create', :notice => @notice
+    redirect_to product_path(@product), :notice => @notice
   end
 end
