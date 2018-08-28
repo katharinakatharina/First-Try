@@ -483,6 +483,26 @@ h1 {
   text-decoration: none;
 }
 
+.button-forbidden {
+  margin-top: 25px;
+  color: #fff;
+  padding: 7px 15px;
+  background-color: #b7b7b7;
+}
+
+.button-forbidden:hover {
+  color: white;
+  background-color: #00c409;
+}
+
+.button-forbidden a:hover {
+  text-decoration: none;
+}
+
+.payment-position {
+  margin-left: 30px;
+}
+
 .notifications {
   position: relative;
   top: 300px;

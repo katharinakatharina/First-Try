@@ -6,10 +6,16 @@
   <div class="container-fluid product-show">
     <div class="row" data-product-id="<%= @product.id %>">
     <%= render 'product-detail', product: @product %>
-    <%= form_with(url: '/payments/create') do |form| %>
-      <%= render partial: "shared/stripe_checkout_button" %>
-      <%= hidden_field_tag(:product_id, @product.id) %>
-    <% end %>
+    <div class="payment-position">
+      <% if user_signed_in? %>
+      <%= form_with(url: '/payments/create') do |form| %>
+        <%= render partial: "shared/stripe_checkout_button" %>
+        <%= hidden_field_tag(:product_id, @product.id) %>
+      <% end %>
+      <% else %>
+            <%= link_to '<button class="button-forbidden">Please login to buy our stuff.</button>'.html_safe, new_user_session_path %>
+      <% end %>
+    </div>
   </div>
     <p id="notice" class="alert alert-info" style="display:none" role="alert">A new comment was posted!</p>
     <% if signed_in? && current_user.admin? %>
@@ -18,6 +24,7 @@
         </div>
       </div>
     <% end %>
+
       <div class="edit_btn button">
           <span><%= link_to 'Back', products_path %></span>
         </div>

@@ -24,9 +24,10 @@ class PaymentsController < ApplicationController
         )
 
         UserMailer.order_placed(@user, @product).deliver_now
-      end
-      redirect_to '/payments/success', notice: "Your payment was processed successfully. Thank you for purchasing."
 
+      #redirect_to '/payments/success'
+      @notice = "Your payment was processed successfully. Thank you for purchasing."
+      end
     rescue Stripe::CardError => e
       # The card has been declined
       body = e.json_body
